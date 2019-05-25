@@ -14,6 +14,9 @@ class App extends React.Component {
       {name: 'PARK', score: 0, id: 4},
     ]
   }
+
+  maxId = 4;
+
   // 1) player 삭제 콜백 펑션 정의
   handleRemovePlayer = (id) => {
     console.log(id);
@@ -41,7 +44,11 @@ class App extends React.Component {
 
   handleAddPlayer = (name) => {
     console.log(name);
+    this.setState(prevState => ({
+      players: [...prevState.players, {name, score: 0, id: ++this.maxId}]
+    }))
   }
+  // shorthand property: key와 value가 같을 경우 하나만 사용
 
   render() {
     return (
