@@ -1,7 +1,16 @@
 import React from 'react';
 import {Counter} from "./Counter";
+import PropTypes from 'prop-types';
 
 export class Player extends React.Component {
+  static propTypes = {
+    removePlayer: PropTypes.func,
+    changeScore: PropTypes.func,
+    id: PropTypes.number,
+    name: PropTypes.string.isRequired,
+    score: PropTypes.number
+  }
+
   render() {
     console.log(this.props.name, ' redered');
     const {removePlayer, id, name, score, changeScore} = this.props;
