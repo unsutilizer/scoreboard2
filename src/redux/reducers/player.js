@@ -1,3 +1,5 @@
+import {ADD_PLAYER} from "../actionType";
+
 const playerInitialState = {
   title: 'Redux Scoreboard',
   players: [
@@ -8,6 +10,16 @@ const playerInitialState = {
   ]
 }
 
+let maxId = 4;
+
 export const playerReducer = (state = playerInitialState, action) => {
-  return state;
+  switch(action.type) {
+    case ADD_PLAYER:
+      return {
+        ...state,
+        players: [...state.players, {name: action.name, score: 0, id: ++maxId}]
+      }
+    default:
+      return state;
+  }
 }

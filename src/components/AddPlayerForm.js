@@ -1,6 +1,8 @@
 import React from 'react';
+import {addPlayer} from "../redux/actions";
+import {connect} from "react-redux";
 
-export class AddPlayerForm extends React.Component {
+class AddPlayerForm extends React.Component {
   textInput = React.createRef();
 
   handleSubmit = (e) => {
@@ -23,3 +25,9 @@ export class AddPlayerForm extends React.Component {
     );
   }
 }
+
+const mapActionToProps = (displatch) => ({
+  addPlayer: (name) => displatch(addPlayer(name))
+})
+
+export default connect(null, mapActionToProps)(AddPlayerForm);
